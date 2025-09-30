@@ -1,0 +1,37 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Page-1" id="8ay2w1NLQrHnAYnHizhS">
+    <mxGraphModel dx="2066" dy="1201" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XDTGOXCAwWw70PU2F9be-1" value="Manager" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="230" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-3" value="Workforce Hub" style="swimlane;startSize=20;rounded=0;swimlaneFillColor=#7EA6E0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="120" width="580" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-2" value="payroll calculation" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XDTGOXCAwWw70PU2F9be-3">
+          <mxGeometry x="110" y="70" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-7" value="time attendance" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="XDTGOXCAwWw70PU2F9be-3">
+          <mxGeometry x="115" y="190" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-4" value="Client" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="590" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-5" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="XDTGOXCAwWw70PU2F9be-1" target="XDTGOXCAwWw70PU2F9be-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="410" as="sourcePoint" />
+            <mxPoint x="510" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XDTGOXCAwWw70PU2F9be-6" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" target="XDTGOXCAwWw70PU2F9be-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="130" y="610" as="sourcePoint" />
+            <mxPoint x="471" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
