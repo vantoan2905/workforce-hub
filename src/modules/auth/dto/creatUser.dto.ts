@@ -11,17 +11,19 @@ export class AuthValidationDto {
 export class AuthRegisterDto {
   @IsEmail()
   email: string
+
   @IsNotEmpty()
   password: string
+  
   @IsNotEmpty()
   firstName: string
+  
   @IsNotEmpty()
   lastName: string;
 
   phoneNumber?: string;
   role?: string;
   isActive?: boolean;
-
   createdBy?: string;
   updatedBy?: string;
 }
