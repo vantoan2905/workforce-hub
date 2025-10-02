@@ -4,7 +4,9 @@ import { Injectable, Inject, Scope } from "@nestjs/common";
 export class AuthService {
   constructor() {}
 
-  async validateUser(email: string, password: string): Promise<any> {
+  async validateUser(body: any): Promise<any> {
+    const { email, password } = body;
+    
     // logic to validate user
     return { email };
   }

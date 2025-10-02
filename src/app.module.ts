@@ -1,19 +1,31 @@
+// src/app.module.ts
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { AuthModule } from './auth/auth.module';
-import { EmployeeModule } from './employee/employee.module';
-import { AuthService } from './auth/auth.service';
-
-import { ConfigModule } from '@nestjs/config';
-
+import { AuthModule } from './modules/auth/auth.module';
+import { EmployeeModule } from './modules/employee/employee.module';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { databaseConfig } from './config/database.config';
 @Module({
-  imports: [AuthModule, EmployeeModule, ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: '.env',
-  })],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [databaseConfig],
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+        configService.get<TypeOrmModuleOptions>('database')!,
+    }),
+    AuthModule,
+    EmployeeModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, AuthService],
+  providers: [AppService],
 })
 export class AppModule {}
