@@ -10,6 +10,13 @@ import { AuthModule } from './modules/auth/auth.module';
 import { EmployeeModule } from './modules/employee/employee.module';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { databaseConfig } from './config/database.config';
+import { TaskModule } from './task/task.module';
+// import {}
+
+// import * as crypto from 'crypto';
+
+// (global as any).crypto = crypto;
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +31,7 @@ import { databaseConfig } from './config/database.config';
     }),
     AuthModule,
     EmployeeModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

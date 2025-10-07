@@ -1,31 +1,22 @@
-import { Injectable, Inject, Scope } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
+import { EmployeeService } from '../employee/employee.service';
+import * as bcrypt from 'bcrypt';
+import { ValidateUserDto } from './dto/validate.dto';
 
 @Injectable()
 export class AuthService {
-  constructor() {}
+  constructor(private readonly employeeService: EmployeeService) {}
 
-  async validateUser(body: any): Promise<any> {
-    const { email, password } = body;
-    
-    // logic to validate user
-    return { email };
-  }
-  async login(user: any) {
-    // logic to login user
-    return {
-      access_token: "some_access_token",
-      refresh_token: "some_refresh_token",
-    };
-  }
-  async refreshToken(token: string) {
-    // logic to refresh token
-    return {
-      refresh_token: "some_refresh_token"
-    };
-  }
-  async logout(user: any) {
-    // logic to logout user
-    return { message: "Logged out" };
-  }
+  async validateUser(dto: ValidateUserDto): Promise<any> {
+    const { username, password: pass } = dto;
+    const user = await this.employeeService.findOne(username);
 
+    if (!user) return null;
+
+    const isMatch = await bcrypt.compare(pass, user.password);
+    if (!isMatch) return null;
+
+    const { password, ...result } = user;
+    return result;
+  }
 }

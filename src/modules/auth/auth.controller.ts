@@ -1,13 +1,24 @@
-import { Controller, Get, Post, Patch } from "@nestjs/common";
+import { Controller, Get, Post, Patch , UseGuards} from "@nestjs/common";
 import { Body } from "@nestjs/common";
 import { Request, Response } from "@nestjs/common";
 import { AuthService } from "./auth.service";
+import { ValidateUserDto } from "./dto/validate.dto";
+import { AuthGuard } from "@nestjs/passport";
+import { ApiBody } from "@nestjs/swagger";
+import { LocalAuthGuard } from "./strategies/local-auth.guard";
+// import {vali}
+
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
+    @UseGuards(LocalAuthGuard)
     @Post('validateUser')
-    validateUser(@Body() body: any, @Request() req: any, @Response() res: any) {
+    @ApiBody({ type: ValidateUserDto })
+    // schema for request body
+
+    validateUser(@Body() body: ValidateUserDto, @Request() req: any, @Response() res: any) {
+
         this.authService.validateUser(body);
         return { message: 'Validate user endpoint' };
     }
@@ -16,9 +27,9 @@ export class AuthController {
     register(@Body() body: any, @Request() req: any, @Response() res: any) {
         return { message: 'Register endpoint' };
     }
-
+    @UseGuards(AuthGuard('local'))
     @Post('logout')
-    logout(@Body() body: any, @Request() req: any, @Response() res: any) {
+    logout(@Body() body: ValidateUserDto, @Request() req: any, @Response() res: any) {
         return { message: 'Logout endpoint' };
     }
 
