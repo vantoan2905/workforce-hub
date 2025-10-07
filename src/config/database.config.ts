@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Auth } from '../entities/auth.entity';
+import { Auth } from '../modules/auth/entities/auth.entity';
 
 export const databaseConfig = registerAs(
   'database',
