@@ -4,21 +4,21 @@ import { Employee } from 'src/modules/employee/entities/employee.entities';
 @Entity('auth')
 export class Auth {
   @PrimaryGeneratedColumn()
-  auth_id: number;
+  authId: number;
 
   @Column({ unique: true })
-  employee_id: number;
+  employeeId: number;
 
   @OneToOne(() => Employee, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'employee_id' })
+  @JoinColumn({ name: 'employeeId' })
   employee: Employee;
 
   @Column({ type: 'text', nullable: true })
-  refresh_token: string;
+  refreshToken: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 }
