@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 @Entity('employee')
 export class Employee {
   @PrimaryGeneratedColumn()
-  employee_id: number;
+  employeeId: number;
 
   @Column({ unique: true })
   username: string;
@@ -15,35 +15,35 @@ export class Employee {
   email: string;
 
   @Column({ nullable: true })
-  phone_number: string;
+  phoneNumber: string;
 
   @Column({ nullable: true })
-  first_name: string;
+  firstName: string;
 
   @Column({ nullable: true })
-  last_name: string;
+  lastName: string;
 
   @Column({ type: 'text', nullable: true })
   address: string;
 
   @Column({ type: 'date', nullable: true })
-  date_of_birth: Date;
+  dateOfBirth: Date;
 
   @Column({ nullable: true })
-  card_id: string;
+  cardId: string;
 
   @Column({ default: true })
-  is_active: boolean;
+  isActive: boolean;
 
   @Column({ default: false })
-  is_deleted: boolean;
+  isDeleted: boolean;
 
   @Column({ default: 'employee' })
   role: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 }

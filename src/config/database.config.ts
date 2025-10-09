@@ -1,6 +1,7 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { Auth } from '../modules/auth/entities/auth.entity';
+import { Employee } from 'src/modules/employee/entities/employee.entities';
 
 export const databaseConfig = registerAs(
   'database',
@@ -11,7 +12,7 @@ export const databaseConfig = registerAs(
     username: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || '29052003',
     database: process.env.POSTGRES_DB || 'workforce_hub',
-    entities: [Auth],
+    entities: [Auth, Employee],
     synchronize: true, // set to false in production
     autoLoadEntities: true,
   }),
